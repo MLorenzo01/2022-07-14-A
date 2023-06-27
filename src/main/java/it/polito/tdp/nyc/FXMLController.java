@@ -41,7 +41,7 @@ public class FXMLController {
     private TableColumn<?, ?> clV2; // Value injected by FXMLLoader
 
     @FXML // fx:id="cmbBorough"
-    private ComboBox<?> cmbBorough; // Value injected by FXMLLoader
+    private ComboBox<String> cmbBorough; // Value injected by FXMLLoader
 
     @FXML // fx:id="tblArchi"
     private TableView<?> tblArchi; // Value injected by FXMLLoader
@@ -63,7 +63,11 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
-    	
+    	if(cmbBorough.getValue() == null) {
+    		txtResult.setText("Selezionare un Borough");
+    		return;
+    	}
+    	model.creaGrafo(cmbBorough.getValue());
     }
 
     @FXML
@@ -90,6 +94,7 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	cmbBorough.getItems().addAll(model.getBoroughs());
     }
 
 }
