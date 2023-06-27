@@ -16,8 +16,7 @@ import it.polito.tdp.nyc.model.Event.EventType;
 
 
 public class Simulazione {
-	int inizio = 0;
-	int fine = 100;
+
 	double p;
 	int d;
 	private PriorityQueue<Event> queue ;
@@ -81,7 +80,7 @@ public class Simulazione {
 				if (duration / 2 > 0) {
 					nta nuovo = trovaNTA(nta);
 					if (nuovo != null) {
-						this.queue.add(new Event(time + 1, EventType.SHARE, nuovo, duration / 2));
+						this.queue.add(new Event(time + 1,  EventType.SHARE, nuovo, duration / 2));
 					}
 				}
 
